@@ -1,0 +1,18 @@
+program Project1;
+
+uses
+  Vcl.Forms,
+  dbConnection in 'dbConnection.pas' {dbForm},
+  loginPage in 'loginPage.pas' {loginForm},
+  userPage in 'userPage.pas' {userForm};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TloginForm, loginForm);
+  Application.CreateForm(TdbForm, dbForm);
+  Application.CreateForm(TuserForm, userForm);
+  Application.Run;
+end.

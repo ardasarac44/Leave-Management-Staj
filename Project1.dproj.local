@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899/12/30 00:00:00.000.135,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\adminPage.pas=</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.088,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\adminPage.pas=</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.064,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\userPage.pas=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.820,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\adminPafe.pas=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.848,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\adminPage.pas=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.064,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\userPage.dfm=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.370,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\dbConnection.pas=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.820,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\adminPafe.dfm=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit3.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.130,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\adminPage.pas=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.082,=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.717,=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.336,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\professor.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.704,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\adminPage.pas=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\adminPafe.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.898,=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.370,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\dbConnection.dfm=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.331,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\loginPage.dfm=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.331,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\loginPage.pas=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.258,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.331,=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.040,=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.648,=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.106,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\adminPage.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.575,=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.848,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\adminPage.dfm=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit3.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.130,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\adminPage.dfm=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.704,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\adminPage.dfm=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\adminPafe.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.249,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\professor.pas=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\professorClass.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.630,=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.639,=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.965,=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.106,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit2.dfm=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\adminPage.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.725,=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.810,=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.833,=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.444,=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2023/06/26 10:47:17.000.413,=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/06/26 13:19:31.000.472,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\creatUserPage.pas=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/06/26 13:19:31.000.472,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\creatUserPage.dfm=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2023/07/03 13:39:06.688,=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/07/03 13:41:29.892,=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/07/03 13:42:33.631,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\deleteUser.dfm=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2023/07/03 13:42:33.631,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\deleteUser.pas=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/07/03 13:43:20.324,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\deleteUserPage.pas=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\deleteUser.pas</Transaction>
+    <Transaction>2023/07/03 13:43:20.324,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\deleteUserPage.dfm=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\deleteUser.dfm</Transaction>
+    <Transaction>2023/07/03 13:44:27.184,=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/07/03 13:44:49.623,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\deleteUserPage.pas=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/07/03 13:44:49.623,C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\deleteUserPage.dfm=C:\Users\staj_arda.saracoglu\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="dbConnection.pas"/>
+    <File Path="dbConnection.dfm"/>
+    <File Path="userPage.pas"/>
+    <File Path="userPage.dfm"/>
+    <File Path="loginPage.pas"/>
+    <File Path="loginPage.dfm"/>
+    <File Path="creatUserPage.pas"/>
+    <File Path="creatUserPage.dfm"/>
+    <File Path="deleteUserPage.pas"/>
+    <File Path="deleteUserPage.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>

@@ -1,0 +1,70 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, dbConnection, adminPage;
+
+type
+  TForm1 = class(TForm)
+    procedure loginButtonClick(Sender: TObject);
+  private
+    { Private declarations }
+
+  public
+    { Public declarations }
+    function checkAdminConnection(username, password: string): boolean;
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+
+
+procedure TForm1.loginButtonClick(Sender: TObject);
+var
+  lusername : string;
+  lpassword : string;
+begin
+     if usernameTextBox.Text <> '' then
+     begin
+     dbConnection.dbForm.userLoginTable.Execute;
+
+     while not dbConnection.dbForm.userLoginTable.Eof do
+       begin
+          lusername := dbConnection.dbForm.userLoginTable.Field('user_name');
+          lpassword := dbConnection.dbForm.userLoginTable.Field('password');
+
+          if (lusername = usernameTextBox.Text) and (lpassword = passwordTextBox.Text) then
+          begin
+            if checkAdminConnection(lusername, lpassword) then
+              adminPage.adminForm.Next;
+          end;
+
+           dbConnection.dbForm.userLoginTable.Next;
+       end;
+     end;
+
+end;
+function TForm1.checkAdminConnection(username, password : string): boolean;
+begin
+  if (username = 'admin') and (password = 'admin') then
+  begin
+    checkAdminConnection := True;
+  end
+  else begin
+    checkAdminConnection := False;
+  end;
+
+end;
+
+
+end.
+
+
+

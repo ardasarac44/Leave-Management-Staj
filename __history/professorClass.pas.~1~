@@ -1,0 +1,17 @@
+unit professorClass;
+
+interface
+
+type
+  Professor = class
+    public
+      firstName,
+      lastName,
+      faculty,
+      department,
+      email : string;
+  end;
+
+implementation
+
+end.
