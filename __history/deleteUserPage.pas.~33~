@@ -59,7 +59,6 @@ begin
       except
         ShowMessage('User not found!');
     end;
-    dbConnection.dbForm.deleteUserWithIdQ.Close;
     Self.Free;
 end;
 

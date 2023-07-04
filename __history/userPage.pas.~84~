@@ -4,18 +4,20 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Grids, dbConnection, professorClass, creatUserPage,
-  Vcl.ComCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Grids, dbConnection, creatUserPage,
+  Vcl.ComCtrls, deleteUserPage;
 
 type
   TuserForm = class(TForm)
     professorsTable: TStringGrid;
     createNewUserButton: TButton;
     updateButton: TButton;
+    deleteUserButton: TButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure createNewUserButtonClick(Sender: TObject);
     procedure updateButtonClick(Sender: TObject);
+    procedure deleteUserButtonClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -55,7 +57,14 @@ implementation
   end;
 
   procedure TuserForm.updateButtonClick(Sender: TObject);
+  var
+    j: integer;
 begin
+     userForm.professorsTable.RowCount := 2;
+     for j := 0 to 5 do
+       begin
+         userForm.professorsTable.Cells[j,i] := '';
+       end;
      userForm.fillTable();
 end;
 
@@ -69,13 +78,22 @@ procedure TuserForm.createNewUserButtonClick(Sender: TObject);
       lAddUserForm.Show;
     end;
 
+procedure TuserForm.deleteUserButtonClick(Sender: TObject);
+  var
+    lDeleteUserForm : TdeleteUser;
+  begin
+    lDeleteUserForm := TdeleteUser.Create(Self);
+    lDeleteUserForm.BringToFront;
+    lDeleteUserForm.Name := 'delete_user_form';
+    lDeleteUserForm.Show;
+  end;
+
 function TuserForm.fillTable(): boolean;
   var
     i : integer;
     j: integer;
   begin
     dbConnection.dbForm.employeesTableQ.Execute;
-    ShowMessage(dbConnection.dbForm.employeesTableQ.Field('firstname'));
     i :=1;
     columnNames[0]:='id';
     columnNames[1]:='firstname';
@@ -90,6 +108,7 @@ function TuserForm.fillTable(): boolean;
               userForm.professorsTable.Cells[j,i]  := dbConnection.dbForm.employeesTableQ.Field(columnNames[j]);
             end;
             i := i+1;
+            userForm.professorsTable.RowCount := i;
             dbConnection.dbForm.employeesTableQ.Next;
       end;
   fillTable := True;

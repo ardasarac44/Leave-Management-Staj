@@ -4,22 +4,23 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, dbConnection, professorClass;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, dbConnection;
 
 type
-  Tcreate_new_user = class(TForm)
+  TcreateNewUser = class(TForm)
     firstNameLabel: TLabel;
     lastNameLabel: TLabel;
-    facultyLabel: TLabel;
+    phoneLabel: TLabel;
     departmentLabel: TLabel;
     emailLabel: TLabel;
     firstNameBox: TEdit;
     lastNameBox: TEdit;
-    facultyBox: TEdit;
+    phoneBox: TEdit;
     departmentBox: TEdit;
     emailBox: TEdit;
     Button1: TButton;
     procedure Button1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -27,7 +28,7 @@ type
   end;
 
 var
-  create_new_user: Tcreate_new_user;
+  createNewUser: TcreateNewUser;
 
 implementation
 
@@ -37,21 +38,15 @@ implementation
 
 
 
-procedure Tcreate_new_user.Button1Click(Sender: TObject);
-var
-  lsqlQuery: string;
-  lnewProfId: integer;
-  begin
-    dbConnection.dbForm.getNumberOfUsersQ.Execute;
+procedure TcreateNewUser.Button1Click(Sender: TObject);
 
-    lnewProfId :=  dbConnection.dbForm.getNumberOfUsersQ.Field('Count(*)');
+  begin
     try
       with dbConnection.dbForm.insertUserQ do
         begin
-           SetVariable('prof_id', lnewProfId+1);
            SetVariable('firstname', firstNameBox.Text);
            SetVariable('lastname', lastNameBox.Text);
-           SetVariable('faculty', facultyBox.Text);
+           SetVariable('phone', phoneBox.Text);
            SetVariable('department', departmentBox.Text);
            SetVariable('email', emailBox.Text);
            Execute;
@@ -59,8 +54,13 @@ var
 
       except
     end;
-    create_new_user.Close;
+    Self.Free;
   end;
 
+
+procedure TcreateNewUser.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Self.Free;
+end;
 
 end.

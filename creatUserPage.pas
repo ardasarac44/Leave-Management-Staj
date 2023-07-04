@@ -54,6 +54,7 @@ procedure TcreateNewUser.Button1Click(Sender: TObject);
 
       except
     end;
+    dbConnection.dbForm.insertUserQ.Close;
     Self.Free;
   end;
 
