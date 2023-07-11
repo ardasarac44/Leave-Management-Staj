@@ -18,6 +18,15 @@ type
     deleteUserWithIdQ: TOracleQuery;
     getEmployeeByIdQ: TOracleQuery;
     getEmployeeByNameQ: TOracleQuery;
+    editUserQ: TOracleQuery;
+    selectUsersQ: TOracleQuery;
+    searchByNameQ: TOracleQuery;
+    searchByLastNameQ: TOracleQuery;
+    searchByIdQ: TOracleQuery;
+    searchByDepartmentQ: TOracleQuery;
+    requestLeaveQ: TOracleQuery;
+    requestPriorityCheckQ: TOracleQuery;
+    getRequestsByIdQ: TOracleQuery;
   private
     { Private declarations }
   public
@@ -30,6 +39,10 @@ var
 implementation
 
 {$R *.dfm}
+
+
+
+
 
 
 

@@ -141,6 +141,18 @@
             <Form>deleteUser</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="editUserPage.pas">
+            <Form>editUser</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="leaveRequestPage.pas">
+            <Form>leaveRequestForm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="showRequestsPage.pas">
+            <Form>usersRequestForm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

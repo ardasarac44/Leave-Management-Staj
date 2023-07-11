@@ -53,6 +53,7 @@ procedure TcreateNewUser.Button1Click(Sender: TObject);
         end;
 
       except
+        ShowMessage('Error occured while inserting user.');
     end;
     dbConnection.dbForm.insertUserQ.Close;
     Self.Free;

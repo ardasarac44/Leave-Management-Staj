@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Grids, dbConnection, creatUserPage,
-  Vcl.ComCtrls, deleteUserPage, editUserPage;
+  Vcl.ComCtrls, deleteUserPage, editUserPage, Vcl.ExtCtrls, Oracle;
 
 type
   TuserForm = class(TForm)
@@ -14,18 +14,33 @@ type
     updateButton: TButton;
     deleteUserButton: TButton;
     editUserButton: TButton;
+    filterPanel: TPanel;
+    filterButton: TButton;
+    idBox: TEdit;
+    firstNameBox: TEdit;
+    departmentBox: TEdit;
+    idLabel: TLabel;
+    lastNameLabel: TLabel;
+    firstNameLabel: TLabel;
+    departmentLabel: TLabel;
+    lastNameBox: TEdit;
+    resetFilterButton: TButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure createNewUserButtonClick(Sender: TObject);
     procedure updateButtonClick(Sender: TObject);
     procedure deleteUserButtonClick(Sender: TObject);
     procedure editUserButtonClick(Sender: TObject);
+    procedure filterButtonClick(Sender: TObject);
+    procedure resetFilterButtonClick(Sender: TObject);
+
 
   private
     { Private declarations }
+    function checkEmptyBox(filterBox : TEdit): boolean;
   public
     { Public declarations }
-    function fillTable(): boolean;
+    function fillTable(tableQuery: TOracleQuery): boolean;
   end;
 type
   TcolumnNames = array [0..5] of string;
@@ -55,11 +70,20 @@ implementation
     userForm.employeesTable.Cells[3,0] := 'Phone';
     userForm.employeesTable.Cells[4,0] := 'Department';
     userForm.employeesTable.Cells[5,0] := 'E-mail';
-    userForm.fillTable();
+    userForm.fillTable(dbConnection.dbForm.employeesTableQ);
 
   end;
 
-  procedure TuserForm.updateButtonClick(Sender: TObject);
+  procedure TuserForm.resetFilterButtonClick(Sender: TObject);
+begin
+  Self.idBox.Text := '';
+  Self.firstNameBox.Text := '';
+  Self.lastNameBox.Text := '';
+  Self.departmentBox.Text := '';
+  userForm.fillTable(dbConnection.dbForm.employeesTableQ);
+end;
+
+procedure TuserForm.updateButtonClick(Sender: TObject);
   var
     j: integer;
 begin
@@ -68,7 +92,7 @@ begin
        begin
          userForm.employeesTable.Cells[j,1] := '';
        end;
-     userForm.fillTable();
+     userForm.fillTable(dbConnection.dbForm.employeesTableQ);
 end;
 
 procedure TuserForm.createNewUserButtonClick(Sender: TObject);
@@ -102,12 +126,20 @@ begin
     lEditUserForm.Show;
 end;
 
-function TuserForm.fillTable(): boolean;
+function TuserForm.fillTable(tableQuery: TOracleQuery): boolean;
   var
     i : integer;
     j: integer;
   begin
-    dbConnection.dbForm.employeesTableQ.Execute;
+    try
+      with tableQuery do
+        begin
+           Execute;
+        end;
+
+      except
+        ShowMessage('Error occured while filling table.');
+    end;
     i :=1;
     columnNames[0]:='id';
     columnNames[1]:='firstname';
@@ -115,17 +147,56 @@ function TuserForm.fillTable(): boolean;
     columnNames[3]:='phone';
     columnNames[4]:='department';
     columnNames[5]:='email';
-    while not dbConnection.dbForm.employeesTableQ.Eof do
+    while not tableQuery.Eof do
       begin
           for j := 0 to 5 do
             begin
-              userForm.employeesTable.Cells[j,i]  := dbConnection.dbForm.employeesTableQ.Field(columnNames[j]);
+              userForm.employeesTable.Cells[j,i]  := tableQuery.Field(columnNames[j]);
             end;
             i := i+1;
             userForm.employeesTable.RowCount := i;
-            dbConnection.dbForm.employeesTableQ.Next;
+            tableQuery.Next;
       end;
   fillTable := True;
-  dbConnection.dbForm.employeesTableQ.Close;
+  tableQuery.Close;
   end;
+procedure TuserForm.filterButtonClick(Sender: TObject);
+begin
+      if Self.checkEmptyBox(idBox) then
+        begin
+          dbConnection.dbForm.searchByIdQ.SetVariable('id',Self.idBox.Text);
+          fillTable(dbConnection.dbForm.searchByIdQ);
+        end;
+      if Self.checkEmptyBox(firstNameBox) then
+        begin
+          dbConnection.dbForm.searchByNameQ.SetVariable('firstname', '^'+Self.firstNameBox.Text);
+          fillTable(dbConnection.dbForm.searchByNameQ);
+        end;
+      if Self.checkEmptyBox(lastNameBox) then
+        begin
+          dbConnection.dbForm.searchByLastNameQ.SetVariable('lastname','^'+Self.lastNameBox.Text);
+          fillTable(dbConnection.dbForm.searchByLastNameQ);
+        end;
+      if Self.checkEmptyBox(departmentBox) then
+        begin
+          dbConnection.dbForm.searchByDepartmentQ.SetVariable('department','^'+Self.departmentBox.Text);
+          fillTable(dbConnection.dbForm.searchByDepartmentQ);
+        end;
+
+
+end;
+
+function TuserForm.checkEmptyBox(filterBox : TEdit): boolean;
+begin
+    if filterBox.Text = '' then
+      begin
+        checkEmptyBox := False;
+      end
+     else
+      begin
+        checkEmptyBox := True;
+      end;
+
+end;
+
 end.

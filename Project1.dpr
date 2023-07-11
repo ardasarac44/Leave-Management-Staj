@@ -6,7 +6,10 @@ uses
   loginPage in 'loginPage.pas' {loginForm},
   userPage in 'userPage.pas' {userForm},
   creatUserPage in 'creatUserPage.pas' {createNewUser},
-  deleteUserPage in 'deleteUserPage.pas' {deleteUser};
+  deleteUserPage in 'deleteUserPage.pas' {deleteUser},
+  editUserPage in 'editUserPage.pas' {editUser},
+  leaveRequestPage in 'leaveRequestPage.pas' {leaveRequestForm},
+  showRequestsPage in 'showRequestsPage.pas' {usersRequestForm};
 
 {$R *.res}
 
@@ -18,5 +21,7 @@ begin
   Application.CreateForm(TuserForm, userForm);
   Application.CreateForm(TcreateNewUser, createNewUser);
   Application.CreateForm(TdeleteUser, deleteUser);
+  Application.CreateForm(TeditUser, editUser);
+  Application.CreateForm(TusersRequestForm, usersRequestForm);
   Application.Run;
 end.

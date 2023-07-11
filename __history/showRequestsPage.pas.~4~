@@ -1,0 +1,47 @@
+unit showRequestsPage;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids;
+
+type
+  TusersRequestForm = class(TForm)
+    requestsTable: TStringGrid;
+    procedure FormCreate(Sender: TObject);
+    procedure requestsTableClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  usersRequestForm: TusersRequestForm;
+
+implementation
+
+{$R *.dfm}
+
+
+
+procedure TusersRequestForm.FormCreate(Sender: TObject);
+begin
+    Self.requestsTable.ColWidths[2] := 70;
+    Self.requestsTable.ColWidths[5] := 60;
+    Self.requestsTable.Cells[0,0] := 'First Name';
+    Self.requestsTable.Cells[1,0] := 'Last Name';
+    Self.requestsTable.Cells[2,0] := 'Request ID';
+    Self.requestsTable.Cells[3,0] := 'Start Date';
+    Self.requestsTable.Cells[4,0] := 'End Date';
+    Self.requestsTable.Cells[5,0] := 'Priority';
+    Self.requestsTable.Cells[6,0] := 'Status';
+end;
+
+procedure TusersRequestForm.requestsTableClick(Sender: TObject);
+begin
+  Application.Terminate;
+end;
+
+end.
