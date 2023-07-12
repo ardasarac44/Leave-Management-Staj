@@ -153,6 +153,10 @@
             <Form>usersRequestForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="editRequestPage.pas">
+            <Form>editRequestForm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

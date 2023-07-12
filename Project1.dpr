@@ -9,7 +9,8 @@ uses
   deleteUserPage in 'deleteUserPage.pas' {deleteUser},
   editUserPage in 'editUserPage.pas' {editUser},
   leaveRequestPage in 'leaveRequestPage.pas' {leaveRequestForm},
-  showRequestsPage in 'showRequestsPage.pas' {usersRequestForm};
+  showRequestsPage in 'showRequestsPage.pas' {usersRequestForm},
+  editRequestPage in 'editRequestPage.pas' {editRequestForm};
 
 {$R *.res}
 

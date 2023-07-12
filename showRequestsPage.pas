@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, dbConnection, Oracle,
-  Vcl.StdCtrls, Vcl.ExtCtrls;
+  Vcl.StdCtrls, Vcl.ExtCtrls, editRequestPage;
 
 type
   TusersRequestForm = class(TForm)
@@ -14,9 +14,17 @@ type
     deleteRequestButton: TButton;
     requestIdDeleteBox: TEdit;
     deleteIdLabel: TLabel;
+    editRequestButton: TButton;
+    Shape2: TShape;
+    requestIdEditBox: TEdit;
+    editIdLabel: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure fillRequestsTable();
     constructor Create(AOwner: TComponent; const userId : integer);reintroduce;
+    procedure editRequestButtonClick(Sender: TObject);
+    function checkRequestStatus(): boolean;
+    procedure requestIdEditBoxClick(Sender: TObject);
+    procedure requestIdDeleteBoxClick(Sender: TObject);
   private
     { Private declarations }
     m_userId: integer;
@@ -31,6 +39,26 @@ implementation
 
 {$R *.dfm}
 
+
+function TusersRequestForm.checkRequestStatus(): boolean;
+var
+  i : integer;
+begin
+  i := 0;
+  checkRequestStatus  := True;
+  while (i <> Self.requestsTable.RowCount) do
+  begin
+     if Self.requestsTable.Cells[2,i] = Self.requestIdEditBox.Text then
+     begin
+       if Self.requestsTable.Cells[6,i] = 'Approved' then
+       begin
+          checkRequestStatus  := False;
+          Break;
+       end;
+     end;
+     i := i+1;
+  end;
+end;
 
 constructor TusersRequestForm.Create(AOwner: TComponent; const userId: Integer);
 begin
@@ -54,6 +82,30 @@ begin
     Self.fillRequestsTable;
 end;
 
+
+
+procedure TusersRequestForm.requestIdDeleteBoxClick(Sender: TObject);
+begin
+  Self.requestIdDeleteBox.Text := '';
+end;
+
+procedure TusersRequestForm.requestIdEditBoxClick(Sender: TObject);
+begin
+  Self.requestIdEditBox.Text := '';
+end;
+
+procedure TusersRequestForm.editRequestButtonClick(Sender: TObject);
+var
+  lEditRequestForm: TeditRequestForm;
+begin
+    if checkRequestStatus() then
+    begin
+      lEditRequestForm := TeditRequestForm.Create(Self,Self.m_userId, StrToInt(Self.requestIdEditBox.Text));
+      lEditRequestForm.BringToFront;
+      lEditRequestForm.Name := 'editRequestForm';
+      lEditRequestForm.Show;
+    end;
+end;
 
 procedure TusersRequestForm.fillRequestsTable();
 var

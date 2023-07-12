@@ -244,4 +244,25 @@ object dbForm: TdbForm
     Left = 328
     Top = 96
   end
+  object getRequestByReqIdQ: TOracleQuery
+    SQL.Strings = (
+      'select firstName, '
+      '       lastname,'
+      '       request_id, '
+      '       start_date, '
+      '       end_date, '
+      '       request_priority, '
+      '       approved '
+      'from CREW_REQUEST'
+      'inner join employee'
+      '     on  crew_request.crew_id = employee.id'
+      'where employee.id = :id and crew_request.request_id = :req_id')
+    Session = OracleSession1
+    Optimize = False
+    Variables.Data = {
+      0400000002000000060000003A00490044000300000000000000000000000E00
+      00003A005200450051005F0049004400050000000000000000000000}
+    Left = 408
+    Top = 216
+  end
 end

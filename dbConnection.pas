@@ -27,6 +27,7 @@ type
     requestLeaveQ: TOracleQuery;
     requestPriorityCheckQ: TOracleQuery;
     getRequestsByIdQ: TOracleQuery;
+    getRequestByReqIdQ: TOracleQuery;
   private
     { Private declarations }
   public
