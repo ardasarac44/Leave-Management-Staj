@@ -29,6 +29,7 @@ type
     getRequestsByIdQ: TOracleQuery;
     getRequestByReqIdQ: TOracleQuery;
     editRequestQ: TOracleQuery;
+    deleteRequestQ: TOracleQuery;
   private
     { Private declarations }
   public

@@ -18,6 +18,7 @@ type
     Shape2: TShape;
     requestIdEditBox: TEdit;
     editIdLabel: TLabel;
+    updateRequestsButton: TButton;
     procedure FormCreate(Sender: TObject);
     procedure fillRequestsTable();
     constructor Create(AOwner: TComponent; const userId : integer);reintroduce;
@@ -25,6 +26,10 @@ type
     function checkRequestStatus(): boolean;
     procedure requestIdEditBoxClick(Sender: TObject);
     procedure requestIdDeleteBoxClick(Sender: TObject);
+    procedure deleteRequestButtonClick(Sender: TObject);
+    function checkRequestId(request : integer): boolean;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure updateRequestsButtonClick(Sender: TObject);
   private
     { Private declarations }
     m_userId: integer;
@@ -68,6 +73,25 @@ end;
 
 
 
+procedure TusersRequestForm.deleteRequestButtonClick(Sender: TObject);
+var
+  req_id: integer;
+begin
+  req_id := StrToInt(Self.requestIdDeleteBox.Text);
+  if checkRequestId(req_id) then
+  begin
+    dbConnection.dbForm.deleteRequestQ.SetVariable('req_id', req_id);
+    dbConnection.dbForm.deleteRequestQ.Execute;
+    dbConnection.dbForm.deleteRequestQ.Close;
+  end;
+end;
+
+procedure TusersRequestForm.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  Self.Free;
+end;
+
 procedure TusersRequestForm.FormCreate(Sender: TObject);
 begin
     Self.requestsTable.ColWidths[2] := 70;
@@ -94,6 +118,11 @@ begin
   Self.requestIdEditBox.Text := '';
 end;
 
+procedure TusersRequestForm.updateRequestsButtonClick(Sender: TObject);
+begin
+    Self.fillRequestsTable;
+end;
+
 procedure TusersRequestForm.editRequestButtonClick(Sender: TObject);
 var
   lEditRequestForm: TeditRequestForm;
@@ -116,6 +145,7 @@ begin
   lRequestQuery.setVariable('id', m_userId);
   lRequestQuery.Execute;
   i := 1;
+  Self.requestsTable.RowCount := 1;
   while not lRequestQuery.Eof do
   begin
     Self.requestsTable.RowCount := i+1;
@@ -128,4 +158,20 @@ begin
   end;
   lRequestQuery.Close;
 end;
+
+function TusersRequestForm.checkRequestId(request : integer): boolean;
+var
+  i: Integer;
+begin
+     checkRequestId := False;
+     for i := 1 to requestsTable.RowCount - 1 do
+     begin
+       if StrToInt(requestsTable.Cells[2,i]) = request then
+       begin
+         checkRequestId := True;
+       end;
+     end;
+end;
+
+
 end.

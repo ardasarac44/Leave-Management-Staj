@@ -67,6 +67,7 @@ begin
         Self.editRequest();
       end;
     end;
+    Self.Free;
 end;
 
 procedure TeditRequestForm.FormCreate(Sender: TObject);
@@ -92,7 +93,6 @@ begin
         Self.editRequestTable.Cells[1,j]  := lEditRequestQuery.Field(j);
       end;
     lEditRequestQuery.Close;
-    ShowMessage(DateToStr(Self.editStartDatePicker.Date));
 end;
 
 function TeditRequestForm.checkAvailableRequests(): boolean;

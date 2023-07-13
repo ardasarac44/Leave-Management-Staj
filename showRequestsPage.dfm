@@ -10,6 +10,7 @@ object usersRequestForm: TusersRequestForm
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnClose = FormClose
   OnCreate = FormCreate
   TextHeight = 15
   object Shape1: TShape
@@ -26,13 +27,13 @@ object usersRequestForm: TusersRequestForm
     Caption = 'ID:'
   end
   object Shape2: TShape
-    Left = 48
+    Left = 24
     Top = 328
     Width = 153
     Height = 106
   end
   object editIdLabel: TLabel
-    Left = 82
+    Left = 58
     Top = 355
     Width = 14
     Height = 15
@@ -58,6 +59,7 @@ object usersRequestForm: TusersRequestForm
     Height = 25
     Caption = 'Delete'
     TabOrder = 1
+    OnClick = deleteRequestButtonClick
   end
   object requestIdDeleteBox: TEdit
     Left = 526
@@ -69,7 +71,7 @@ object usersRequestForm: TusersRequestForm
     OnClick = requestIdDeleteBoxClick
   end
   object editRequestButton: TButton
-    Left = 82
+    Left = 58
     Top = 392
     Width = 83
     Height = 25
@@ -78,7 +80,7 @@ object usersRequestForm: TusersRequestForm
     OnClick = editRequestButtonClick
   end
   object requestIdEditBox: TEdit
-    Left = 102
+    Left = 78
     Top = 352
     Width = 63
     Height = 23
@@ -86,5 +88,14 @@ object usersRequestForm: TusersRequestForm
     TabOrder = 4
     Text = 'Request ID'
     OnClick = requestIdEditBoxClick
+  end
+  object updateRequestsButton: TButton
+    Left = 464
+    Top = 272
+    Width = 156
+    Height = 25
+    Caption = 'Update'
+    TabOrder = 5
+    OnClick = updateRequestsButtonClick
   end
 end

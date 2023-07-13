@@ -265,4 +265,22 @@ object dbForm: TdbForm
     Left = 408
     Top = 216
   end
+  object editRequestQ: TOracleQuery
+    SQL.Strings = (
+      'update CREW_REQUEST'
+      'set start_date = to_date(:start_date, '#39'mm-dd-yyyy'#39'),'
+      '    end_date = to_date(:end_date, '#39'mm-dd-yyyy'#39'),'
+      '    request_priority = :priority'
+      'where REQUEST_ID = :req_id')
+    Session = OracleSession1
+    Optimize = False
+    Variables.Data = {
+      0400000004000000160000003A00530054004100520054005F00440041005400
+      4500050000000000000000000000120000003A0045004E0044005F0044004100
+      54004500050000000000000000000000120000003A005000520049004F005200
+      4900540059000300000000000000000000000E0000003A005200450051005F00
+      49004400030000000000000000000000}
+    Left = 408
+    Top = 32
+  end
 end

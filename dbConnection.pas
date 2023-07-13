@@ -28,6 +28,7 @@ type
     requestPriorityCheckQ: TOracleQuery;
     getRequestsByIdQ: TOracleQuery;
     getRequestByReqIdQ: TOracleQuery;
+    editRequestQ: TOracleQuery;
   private
     { Private declarations }
   public

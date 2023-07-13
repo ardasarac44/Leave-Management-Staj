@@ -197,8 +197,8 @@ object dbForm: TdbForm
       '  (crew_id, start_date, end_date, request_priority, approved)'
       'values'
       
-        '  (:crew_id, to_date(:start_date, '#39'dd-mm-yyyy'#39'), to_date(:end_da' +
-        'te, '#39'dd-mm-yyyy'#39'), :priority, '#39'Pending'#39')')
+        '  (:crew_id, to_date(:start_date, '#39'mm-dd-yyyy'#39'), to_date(:end_da' +
+        'te, '#39'mm-dd-yyyy'#39'), :priority, '#39'Pending'#39')')
     Session = OracleSession1
     Optimize = False
     Variables.Data = {
@@ -281,6 +281,18 @@ object dbForm: TdbForm
       4900540059000300000000000000000000000E0000003A005200450051005F00
       49004400030000000000000000000000}
     Left = 408
+    Top = 32
+  end
+  object deleteRequestQ: TOracleQuery
+    SQL.Strings = (
+      'delete from arda44.CREW_REQUEST'
+      'where REQUEST_ID = :req_id')
+    Session = OracleSession1
+    Optimize = False
+    Variables.Data = {
+      04000000010000000E0000003A005200450051005F0049004400050000000000
+      000000000000}
+    Left = 264
     Top = 32
   end
 end
