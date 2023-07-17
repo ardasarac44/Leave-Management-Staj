@@ -27,6 +27,7 @@ type
     function checkPriority(): integer;
     procedure editButtonClick(Sender: TObject);
     procedure editRequest();
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     m_userId: integer;
@@ -69,6 +70,11 @@ begin
     end;
 end;
 
+procedure TeditRequestForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ Self.Free;
+end;
+
 procedure TeditRequestForm.FormCreate(Sender: TObject);
 var
   lEditRequestQuery : TOracleQuery;
@@ -92,7 +98,6 @@ begin
         Self.editRequestTable.Cells[1,j]  := lEditRequestQuery.Field(j);
       end;
     lEditRequestQuery.Close;
-    ShowMessage(DateToStr(Self.editStartDatePicker.Date));
 end;
 
 function TeditRequestForm.checkAvailableRequests(): boolean;

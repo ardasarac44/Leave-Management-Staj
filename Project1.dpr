@@ -10,7 +10,8 @@ uses
   editUserPage in 'editUserPage.pas' {editUser},
   leaveRequestPage in 'leaveRequestPage.pas' {leaveRequestForm},
   showRequestsPage in 'showRequestsPage.pas' {usersRequestForm},
-  editRequestPage in 'editRequestPage.pas' {editRequestForm};
+  editRequestPage in 'editRequestPage.pas' {editRequestForm},
+  adminRequestControlPage in 'adminRequestControlPage.pas' {controlRequestsForm};
 
 {$R *.res}
 

@@ -81,9 +81,9 @@ object leaveRequestForm: TleaveRequestForm
     OnClick = requestButtonClick
   end
   object userGrid: TStringGrid
-    Left = 56
+    Left = 24
     Top = 56
-    Width = 177
+    Width = 250
     Height = 225
     ColCount = 2
     DefaultColWidth = 90

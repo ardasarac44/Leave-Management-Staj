@@ -42,11 +42,11 @@ object dbForm: TdbForm
   end
   object employeesTableQ: TOracleQuery
     SQL.Strings = (
-      'select * from arda44.EMPLOYEE  order by id')
+      'select * from arda44.employee  order by id')
     Session = OracleSession1
     Optimize = False
-    Left = 552
-    Top = 88
+    Left = 584
+    Top = 48
   end
   object insertUserQ: TOracleQuery
     SQL.Strings = (
@@ -67,16 +67,8 @@ object dbForm: TdbForm
       160000003A004400450050004100520054004D0045004E005400050000000000
       0000000000000C0000003A0045004D00410049004C0005000000000000000000
       0000}
-    Left = 552
-    Top = 136
-  end
-  object getNumberOfUsersQ: TOracleQuery
-    SQL.Strings = (
-      'SELECT COUNT(*) FROM professors')
-    Session = OracleSession1
-    Optimize = False
-    Left = 552
-    Top = 336
+    Left = 584
+    Top = 96
   end
   object deleteUserWithIdQ: TOracleQuery
     SQL.Strings = (
@@ -84,8 +76,8 @@ object dbForm: TdbForm
     Session = OracleSession1
     Optimize = False
     Variables.Data = {0400000001000000060000003A0049004400050000000000000000000000}
-    Left = 552
-    Top = 264
+    Left = 584
+    Top = 160
   end
   object getEmployeeByIdQ: TOracleQuery
     SQL.Strings = (
@@ -93,22 +85,24 @@ object dbForm: TdbForm
     Session = OracleSession1
     Optimize = False
     Variables.Data = {0400000001000000060000003A0049004400030000000000000000000000}
-    Left = 456
-    Top = 88
+    Left = 512
+    Top = 56
   end
-  object getEmployeeByNameQ: TOracleQuery
+  object getEmployeeFilterQ: TOracleQuery
     SQL.Strings = (
       
-        'select * from arda44.employee where (firstname = :firstname and ' +
-        'lastname = :lastname)')
+        'select * from arda44.employee where (id = :id) OR firstname = :f' +
+        'irstname or lastname = :lastname or department = :department')
     Session = OracleSession1
     Optimize = False
     Variables.Data = {
-      0400000002000000140000003A00460049005200530054004E0041004D004500
+      0400000004000000140000003A00460049005200530054004E0041004D004500
       050000000000000000000000120000003A004C004100530054004E0041004D00
-      4500050000000000000000000000}
-    Left = 448
-    Top = 144
+      4500050000000000000000000000160000003A00440045005000410052005400
+      4D0045004E005400050000000000000000000000060000003A00490044000300
+      00000000000000000000}
+    Left = 512
+    Top = 112
   end
   object editUserQ: TOracleQuery
     SQL.Strings = (
@@ -130,8 +124,8 @@ object dbForm: TdbForm
       000000000000000000000C0000003A00500048004F004E004500050000000000
       0000000000000C0000003A0045004D00410049004C0005000000000000000000
       0000}
-    Left = 456
-    Top = 264
+    Left = 568
+    Top = 224
   end
   object selectUsersQ: TOracleQuery
     SQL.Strings = (
@@ -164,8 +158,8 @@ object dbForm: TdbForm
     Variables.Data = {
       0400000001000000120000003A004C004100530054004E0041004D0045000500
       00000000000000000000}
-    Left = 376
-    Top = 368
+    Left = 584
+    Top = 352
   end
   object searchByIdQ: TOracleQuery
     SQL.Strings = (
@@ -182,7 +176,7 @@ object dbForm: TdbForm
     SQL.Strings = (
       'SELECT * '
       'FROM arda44.employee'
-      'WHERE regexp_like (department, :department) ')
+      'WHERE department = :department')
     Session = OracleSession1
     Optimize = False
     Variables.Data = {
@@ -262,7 +256,7 @@ object dbForm: TdbForm
     Variables.Data = {
       0400000002000000060000003A00490044000300000000000000000000000E00
       00003A005200450051005F0049004400050000000000000000000000}
-    Left = 408
+    Left = 488
     Top = 216
   end
   object editRequestQ: TOracleQuery
@@ -282,5 +276,78 @@ object dbForm: TdbForm
       49004400030000000000000000000000}
     Left = 408
     Top = 32
+  end
+  object deleteRequestQ: TOracleQuery
+    SQL.Strings = (
+      'delete from CREW_REQUEST'
+      'where REQUEST_ID = :req_id and crew_id = :crew_id')
+    Session = OracleSession1
+    Optimize = False
+    Variables.Data = {
+      04000000020000000E0000003A005200450051005F0049004400030000000000
+      000000000000100000003A0043005200450057005F0049004400030000000000
+      000000000000}
+    Left = 240
+    Top = 80
+  end
+  object getEmployeeByNameQ: TOracleQuery
+    SQL.Strings = (
+      
+        'select * from arda44.employee where firstname = :firstname and l' +
+        'astname = :lastname ')
+    Session = OracleSession1
+    Optimize = False
+    Variables.Data = {
+      0400000002000000140000003A00460049005200530054004E0041004D004500
+      050000000000000000000000120000003A004C004100530054004E0041004D00
+      4500050000000000000000000000}
+    Left = 288
+    Top = 24
+  end
+  object getRequestsTableQ: TOracleQuery
+    SQL.Strings = (
+      'Select crew_id,'
+      '       firstname,'
+      '       lastname,'
+      '       department,'
+      '       request_id,'
+      '       start_date,'
+      '       end_date,'
+      '       request_priority'
+      'from crew_request'
+      'inner join employee on crew_request.crew_id = employee.id'
+      'order by crew_id')
+    Session = OracleSession1
+    Optimize = False
+    Left = 384
+    Top = 368
+  end
+  object requestsFilterQ: TOracleQuery
+    SQL.Strings = (
+      'Select crew_id,'
+      '       firstname,'
+      '       lastname,'
+      '       department,'
+      '       request_id,'
+      '       start_date,'
+      '       end_date,'
+      '       request_priority'
+      'from crew_request'
+      'inner join employee on crew_request.crew_id = employee.id'
+      
+        'where crew_id = :id or firstname = :firstname or lastname = :las' +
+        'tname or request_id = :req_id or department = :department'
+      'order by crew_id')
+    Session = OracleSession1
+    Optimize = False
+    Variables.Data = {
+      0400000005000000060000003A00490044000300000000000000000000001400
+      00003A00460049005200530054004E0041004D00450005000000000000000000
+      0000120000003A004C004100530054004E0041004D0045000500000000000000
+      000000000E0000003A005200450051005F004900440003000000000000000000
+      0000160000003A004400450050004100520054004D0045004E00540005000000
+      0000000000000000}
+    Left = 512
+    Top = 296
   end
 end

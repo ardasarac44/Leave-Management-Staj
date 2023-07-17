@@ -10,6 +10,7 @@ object editRequestForm: TeditRequestForm
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnClose = FormClose
   OnCreate = FormCreate
   TextHeight = 15
   object Shape1: TShape
@@ -42,13 +43,14 @@ object editRequestForm: TeditRequestForm
   object editRequestTable: TStringGrid
     Left = 40
     Top = 72
-    Width = 209
+    Width = 225
     Height = 297
     ColCount = 2
     DefaultColWidth = 100
     DefaultRowHeight = 40
     RowCount = 7
     FixedRows = 0
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goFixedRowDefAlign]
     TabOrder = 0
   end
   object editStartDatePicker: TDatePicker

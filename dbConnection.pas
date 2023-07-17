@@ -14,10 +14,9 @@ type
     userLoginTable: TOracleQuery;
     employeesTableQ: TOracleQuery;
     insertUserQ: TOracleQuery;
-    getNumberOfUsersQ: TOracleQuery;
     deleteUserWithIdQ: TOracleQuery;
     getEmployeeByIdQ: TOracleQuery;
-    getEmployeeByNameQ: TOracleQuery;
+    getEmployeeFilterQ: TOracleQuery;
     editUserQ: TOracleQuery;
     selectUsersQ: TOracleQuery;
     searchByNameQ: TOracleQuery;
@@ -29,6 +28,10 @@ type
     getRequestsByIdQ: TOracleQuery;
     getRequestByReqIdQ: TOracleQuery;
     editRequestQ: TOracleQuery;
+    deleteRequestQ: TOracleQuery;
+    getEmployeeByNameQ: TOracleQuery;
+    getRequestsTableQ: TOracleQuery;
+    requestsFilterQ: TOracleQuery;
   private
     { Private declarations }
   public

@@ -157,6 +157,10 @@
             <Form>editRequestForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="adminRequestControlPage.pas">
+            <Form>controlRequestsForm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

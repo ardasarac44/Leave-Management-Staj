@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Grids, dbConnection, creatUserPage,
-  Vcl.ComCtrls, deleteUserPage, editUserPage, Vcl.ExtCtrls, Oracle;
+  Vcl.ComCtrls, deleteUserPage, editUserPage, Vcl.ExtCtrls, Oracle, adminRequestControlPage;
 
 type
   TuserForm = class(TForm)
@@ -25,6 +25,7 @@ type
     departmentLabel: TLabel;
     lastNameBox: TEdit;
     resetFilterButton: TButton;
+    showRequestsButton: TButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure createNewUserButtonClick(Sender: TObject);
@@ -33,6 +34,7 @@ type
     procedure editUserButtonClick(Sender: TObject);
     procedure filterButtonClick(Sender: TObject);
     procedure resetFilterButtonClick(Sender: TObject);
+    procedure showRequestsButtonClick(Sender: TObject);
 
 
   private
@@ -81,6 +83,16 @@ begin
   Self.lastNameBox.Text := '';
   Self.departmentBox.Text := '';
   userForm.fillTable(dbConnection.dbForm.employeesTableQ);
+end;
+
+procedure TuserForm.showRequestsButtonClick(Sender: TObject);
+var
+    lcontrolRequests :TcontrolRequestsForm;
+    begin
+      lcontrolRequests := TcontrolRequestsForm.Create(Self);
+      lcontrolRequests.BringToFront;
+      lcontrolRequests.Name := 'control_requests_form';
+      lcontrolRequests.Show;
 end;
 
 procedure TuserForm.updateButtonClick(Sender: TObject);
@@ -162,27 +174,21 @@ function TuserForm.fillTable(tableQuery: TOracleQuery): boolean;
   end;
 procedure TuserForm.filterButtonClick(Sender: TObject);
 begin
+
       if Self.checkEmptyBox(idBox) then
         begin
-          dbConnection.dbForm.searchByIdQ.SetVariable('id',Self.idBox.Text);
-          fillTable(dbConnection.dbForm.searchByIdQ);
-        end;
-      if Self.checkEmptyBox(firstNameBox) then
+          dbConnection.dbForm.getEmployeeFilterQ.SetVariable('id',StrToInt(Self.idBox.Text));
+        end
+        else
         begin
-          dbConnection.dbForm.searchByNameQ.SetVariable('firstname', '^'+Self.firstNameBox.Text);
-          fillTable(dbConnection.dbForm.searchByNameQ);
-        end;
-      if Self.checkEmptyBox(lastNameBox) then
-        begin
-          dbConnection.dbForm.searchByLastNameQ.SetVariable('lastname','^'+Self.lastNameBox.Text);
-          fillTable(dbConnection.dbForm.searchByLastNameQ);
-        end;
-      if Self.checkEmptyBox(departmentBox) then
-        begin
-          dbConnection.dbForm.searchByDepartmentQ.SetVariable('department','^'+Self.departmentBox.Text);
-          fillTable(dbConnection.dbForm.searchByDepartmentQ);
+          dbConnection.dbForm.getEmployeeFilterQ.SetVariable('id',-1);
         end;
 
+        dbConnection.dbForm.getEmployeeFilterQ.SetVariable('firstname', Self.firstNameBox.Text);
+        dbConnection.dbForm.getEmployeeFilterQ.SetVariable('lastname', Self.lastNameBox.Text);
+        dbConnection.dbForm.getEmployeeFilterQ.SetVariable('department', Self.departmentBox.Text);
+
+        fillTable(dbConnection.dbForm.getEmployeeFilterQ);
 
 end;
 

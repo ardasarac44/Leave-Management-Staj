@@ -78,8 +78,9 @@ var
         Self.userGrid.Cells[0,1] := 'First Name';
         Self.userGrid.Cells[0,2] := 'Last Name';
         Self.userGrid.Cells[0,3] := 'Phone';
-        Self.userGrid.Cells[0,4] := 'Department';
-        Self.userGrid.Cells[0,5] := 'E-mail';
+        Self.userGrid.Cells[0,4] := 'E-mail';
+        Self.userGrid.Cells[0,5] := 'Department';
+        Self.userGrid.ColWidths[1] := 140;
       try
           with dbConnection.dbForm.getEmployeeByIdQ do
             begin

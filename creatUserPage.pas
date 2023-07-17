@@ -19,9 +19,20 @@ type
     departmentBox: TEdit;
     emailBox: TEdit;
     Button1: TButton;
+    userNameLabel: TLabel;
+    passwordLabel: TLabel;
+    userNameBox: TEdit;
+    passwordBox: TEdit;
+    passwordAgainBox: TEdit;
+    paswordAgainLabel: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure phoneBoxClick(Sender: TObject);
   private
+    function getUserId(): integer;
+    function checkPasswordBoxes(): boolean;
+    procedure insertUserCrewDatabase();
+    procedure insertUserLoginDatabase();
     { Private declarations }
   public
     { Public declarations }
@@ -39,9 +50,56 @@ implementation
 
 
 procedure TcreateNewUser.Button1Click(Sender: TObject);
-
+begin
+  if Self.checkPasswordBoxes() then
   begin
-    try
+    Self.insertUserCrewDatabase;
+    Self.insertUserLoginDatabase;
+    ShowMessage('User successfully created.');
+    Self.Free;
+  end
+  else
+  begin
+    ShowMessage('Passwords are not matched, try again.');
+  end;
+end;
+
+
+function TcreateNewUser.getUserId(): Integer;
+begin
+   getUserId := -1;
+   try
+      with dbConnection.dbForm.getUserIdQ do
+        begin
+           SetVariable('firstname', firstNameBox.Text);
+           SetVariable('lastname', lastNameBox.Text);
+           SetVariable('phone', phoneBox.Text);
+           SetVariable('department', departmentBox.Text);
+           SetVariable('email', emailBox.Text);
+           Execute;
+           getUserId := Field(0);
+        end;
+
+      except
+        ShowMessage('Error occured while adding new user.');
+    end;
+    dbConnection.dbForm.getUserIdQ.Close;
+end;
+
+function TcreateNewUser.checkPasswordBoxes(): boolean;
+begin
+  checkPasswordBoxes := False;
+  if Self.passwordBox.Text = Self.passwordAgainBox.Text then
+  begin
+    checkPasswordBoxes := True;
+  end;
+
+end;
+
+
+procedure TcreateNewUser.insertUserCrewDatabase();
+begin
+     try
       with dbConnection.dbForm.insertUserQ do
         begin
            SetVariable('firstname', firstNameBox.Text);
@@ -53,12 +111,35 @@ procedure TcreateNewUser.Button1Click(Sender: TObject);
         end;
 
       except
-        ShowMessage('Error occured while inserting user.');
+        ShowMessage('Error occured while adding new user.');
     end;
     dbConnection.dbForm.insertUserQ.Close;
-    Self.Free;
-  end;
+end;
 
+
+procedure TcreateNewUser.insertUserLoginDatabase();
+begin
+    try
+      with dbConnection.dbForm.insertNewUserLoginQ do
+        begin
+           SetVariable('user_id', Self.getUserId());
+           SetVariable('user_name', Self.userNameBox.Text);
+           SetVariable('user_password', Self.passwordBox.Text);
+           Execute;
+        end;
+      except
+        ShowMessage('Error occured while adding new user.');
+    end;
+    dbConnection.dbForm.insertNewUserLoginQ.Close;
+end;
+
+
+
+
+procedure TcreateNewUser.phoneBoxClick(Sender: TObject);
+begin
+  Self.phoneBox.Text := '';
+end;
 
 procedure TcreateNewUser.FormClose(Sender: TObject; var Action: TCloseAction);
 begin

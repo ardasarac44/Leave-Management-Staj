@@ -3,7 +3,7 @@ object createNewUser: TcreateNewUser
   Top = 52
   Caption = 'Create New User'
   ClientHeight = 289
-  ClientWidth = 254
+  ClientWidth = 503
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -48,6 +48,27 @@ object createNewUser: TcreateNewUser
     Height = 15
     Caption = 'E-mail:'
   end
+  object userNameLabel: TLabel
+    Left = 256
+    Top = 24
+    Width = 61
+    Height = 15
+    Caption = 'User Name:'
+  end
+  object passwordLabel: TLabel
+    Left = 256
+    Top = 67
+    Width = 53
+    Height = 15
+    Caption = 'Password:'
+  end
+  object paswordAgainLabel: TLabel
+    Left = 256
+    Top = 115
+    Width = 87
+    Height = 15
+    Caption = 'Password Again:'
+  end
   object firstNameBox: TEdit
     Left = 96
     Top = 21
@@ -69,6 +90,8 @@ object createNewUser: TcreateNewUser
     Height = 23
     HideSelection = False
     TabOrder = 2
+    Text = '(5xx-xxx-xxxx)'
+    OnClick = phoneBoxClick
   end
   object departmentBox: TEdit
     Left = 96
@@ -92,5 +115,27 @@ object createNewUser: TcreateNewUser
     Caption = 'Add'
     TabOrder = 5
     OnClick = Button1Click
+  end
+  object userNameBox: TEdit
+    Left = 349
+    Top = 21
+    Width = 121
+    Height = 23
+    TabOrder = 6
+  end
+  object passwordBox: TEdit
+    Left = 349
+    Top = 64
+    Width = 121
+    Height = 23
+    TabOrder = 7
+  end
+  object passwordAgainBox: TEdit
+    Left = 349
+    Top = 112
+    Width = 121
+    Height = 23
+    CanUndoSelText = True
+    TabOrder = 8
   end
 end

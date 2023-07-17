@@ -78,6 +78,9 @@ begin
     Self.employeeGrid.Cells[3,0] := 'Phone';
     Self.employeeGrid.Cells[4,0] := 'Department';
     Self.employeeGrid.Cells[5,0] := 'E-mail';
+    Self.employeeGrid.ColWidths[0] := 50;
+    Self.employeeGrid.ColWidths[4] := 95;
+    Self.employeeGrid.ColWidths[5] := 120;
 end;
 
 procedure TdeleteUser.idBoxClick(Sender: TObject);

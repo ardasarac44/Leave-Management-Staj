@@ -46,14 +46,15 @@ object deleteUser: TdeleteUser
     OnClick = searchByIdButtonClick
   end
   object employeeGrid: TStringGrid
-    Left = 32
+    Left = 24
     Top = 264
-    Width = 537
+    Width = 577
     Height = 57
     ColCount = 6
     DefaultColWidth = 88
     FixedCols = 0
     RowCount = 2
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goFixedRowDefAlign]
     TabOrder = 2
   end
   object firstNameBox: TEdit

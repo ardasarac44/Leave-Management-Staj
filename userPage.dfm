@@ -142,4 +142,13 @@ object userForm: TuserForm
       OnClick = resetFilterButtonClick
     end
   end
+  object showRequestsButton: TButton
+    Left = 32
+    Top = 392
+    Width = 113
+    Height = 41
+    Caption = 'Show All Requests'
+    TabOrder = 6
+    OnClick = showRequestsButtonClick
+  end
 end

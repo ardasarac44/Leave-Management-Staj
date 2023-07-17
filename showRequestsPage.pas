@@ -81,9 +81,11 @@ begin
   if checkRequestId(req_id) then
   begin
     dbConnection.dbForm.deleteRequestQ.SetVariable('req_id', req_id);
+    dbConnection.dbForm.deleteRequestQ.SetVariable('crew_id', m_userId);
     dbConnection.dbForm.deleteRequestQ.Execute;
     dbConnection.dbForm.deleteRequestQ.Close;
   end;
+  Self.fillRequestsTable;
 end;
 
 procedure TusersRequestForm.FormClose(Sender: TObject;
