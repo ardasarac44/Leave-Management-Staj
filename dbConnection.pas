@@ -32,6 +32,11 @@ type
     getEmployeeByNameQ: TOracleQuery;
     getRequestsTableQ: TOracleQuery;
     requestsFilterQ: TOracleQuery;
+    approveRequestQ: TOracleQuery;
+    denyRequestQ: TOracleQuery;
+    setPendingRequestQ: TOracleQuery;
+    insertNewUserLoginQ: TOracleQuery;
+    getUserIdQ: TOracleQuery;
   private
     { Private declarations }
   public

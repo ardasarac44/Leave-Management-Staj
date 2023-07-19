@@ -152,22 +152,23 @@ function TuserForm.fillTable(tableQuery: TOracleQuery): boolean;
       except
         ShowMessage('Error occured while filling table.');
     end;
-    i :=1;
     columnNames[0]:='id';
     columnNames[1]:='firstname';
     columnNames[2]:='lastname';
     columnNames[3]:='phone';
     columnNames[4]:='department';
     columnNames[5]:='email';
+    userForm.employeesTable.RowCount := 1;
+    i := 1;
     while not tableQuery.Eof do
       begin
+          userForm.employeesTable.RowCount := i+1;
           for j := 0 to 5 do
-            begin
+          begin
               userForm.employeesTable.Cells[j,i]  := tableQuery.Field(columnNames[j]);
-            end;
-            i := i+1;
-            userForm.employeesTable.RowCount := i;
-            tableQuery.Next;
+          end;
+          i := i+1;
+          tableQuery.Next;
       end;
   fillTable := True;
   tableQuery.Close;

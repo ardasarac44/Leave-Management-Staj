@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, dbConnection, userPage, leaveRequestPage;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, dbConnection, userPage, leaveRequestPage,
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls;
 
 type
   TloginForm = class(TForm)
@@ -13,6 +14,7 @@ type
     usernameLabel: TLabel;
     passwordLabel: TLabel;
     loginButton: TButton;
+    hititLogoImage: TImage;
     procedure loginButtonClick(Sender: TObject);
   private
     { Private declarations }
@@ -31,7 +33,8 @@ implementation
 {$R *.dfm}
 
 
-  procedure TloginForm.loginButtonClick(Sender: TObject);
+
+procedure TloginForm.loginButtonClick(Sender: TObject);
   var
     lusername : string;
     lpassword : string;

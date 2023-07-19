@@ -42,7 +42,7 @@ object dbForm: TdbForm
   end
   object employeesTableQ: TOracleQuery
     SQL.Strings = (
-      'select * from arda44.employee  order by id')
+      'select * from arda44.employee  order by department desc, id')
     Session = OracleSession1
     Optimize = False
     Left = 584
@@ -81,7 +81,13 @@ object dbForm: TdbForm
   end
   object getEmployeeByIdQ: TOracleQuery
     SQL.Strings = (
-      'select * from arda44.employee where id = :id')
+      'select id,'
+      '       firstname,'
+      '       lastname,'
+      '       phone,'
+      '       department,'
+      '       email'
+      'from arda44.employee where id = :id')
     Session = OracleSession1
     Optimize = False
     Variables.Data = {0400000001000000060000003A0049004400030000000000000000000000}
@@ -306,14 +312,15 @@ object dbForm: TdbForm
   end
   object getRequestsTableQ: TOracleQuery
     SQL.Strings = (
-      'Select crew_id,'
+      'Select request_id, '
       '       firstname,'
       '       lastname,'
-      '       department,'
       '       request_id,'
+      '       department,'
       '       start_date,'
       '       end_date,'
-      '       request_priority'
+      '       request_priority,'
+      '       approved'
       'from crew_request'
       'inner join employee on crew_request.crew_id = employee.id'
       'order by crew_id')
@@ -336,7 +343,8 @@ object dbForm: TdbForm
       'inner join employee on crew_request.crew_id = employee.id'
       
         'where crew_id = :id or firstname = :firstname or lastname = :las' +
-        'tname or request_id = :req_id or department = :department'
+        'tname or request_id = :req_id or (regexp_like(department, :depar' +
+        'tment))'
       'order by crew_id')
     Session = OracleSession1
     Optimize = False
@@ -349,5 +357,81 @@ object dbForm: TdbForm
       0000000000000000}
     Left = 512
     Top = 296
+  end
+  object approveRequestQ: TOracleQuery
+    SQL.Strings = (
+      'update arda44.CREW_REQUEST'
+      'set approved = '#39'Approved'#39
+      'where REQUEST_ID = :req_id')
+    Session = OracleSession1
+    Optimize = False
+    Variables.Data = {
+      04000000010000000E0000003A005200450051005F0049004400030000000000
+      000000000000}
+    Left = 184
+    Top = 360
+  end
+  object denyRequestQ: TOracleQuery
+    SQL.Strings = (
+      'update arda44.CREW_REQUEST'
+      'set approved = '#39'Denied'#39
+      'where REQUEST_ID = :req_id')
+    Session = OracleSession1
+    Optimize = False
+    Variables.Data = {
+      04000000010000000E0000003A005200450051005F0049004400030000000000
+      000000000000}
+    Left = 128
+    Top = 360
+  end
+  object setPendingRequestQ: TOracleQuery
+    SQL.Strings = (
+      'update arda44.CREW_REQUEST'
+      'set approved = '#39'Pending'#39
+      'where REQUEST_ID = :req_id')
+    Session = OracleSession1
+    Optimize = False
+    Variables.Data = {
+      04000000010000000E0000003A005200450051005F0049004400050000000000
+      000000000000}
+    Left = 72
+    Top = 360
+  end
+  object insertNewUserLoginQ: TOracleQuery
+    SQL.Strings = (
+      'insert into USER_LOGIN'
+      '  (user_id, username, password)'
+      'values'
+      '  (:user_id, :user_name, :user_password)')
+    Session = OracleSession1
+    Optimize = False
+    Variables.Data = {
+      0400000003000000100000003A0055005300450052005F004900440003000000
+      0000000000000000140000003A0055005300450052005F004E0041004D004500
+      0500000000000000000000001C0000003A0055005300450052005F0050004100
+      5300530057004F0052004400050000000000000000000000}
+    Left = 184
+    Top = 320
+  end
+  object getUserIdQ: TOracleQuery
+    SQL.Strings = (
+      'SELECT id'
+      'from arda44.employee'
+      'where firstname = :firstname and '
+      '      lastname = :lastname and '
+      '      phone = :phone and '
+      '      department = :department and '
+      '      email = :email')
+    Session = OracleSession1
+    Optimize = False
+    Variables.Data = {
+      0400000005000000140000003A00460049005200530054004E0041004D004500
+      050000000000000000000000120000003A004C004100530054004E0041004D00
+      45000500000000000000000000000C0000003A00500048004F004E0045000500
+      00000000000000000000160000003A004400450050004100520054004D004500
+      4E0054000500000000000000000000000C0000003A0045004D00410049004C00
+      050000000000000000000000}
+    Left = 128
+    Top = 320
   end
 end
