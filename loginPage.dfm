@@ -13,14 +13,14 @@ object loginForm: TloginForm
   TextHeight = 15
   object usernameLabel: TLabel
     Left = 136
-    Top = 221
+    Top = 205
     Width = 56
     Height = 15
     Caption = 'Username:'
   end
   object passwordLabel: TLabel
     Left = 136
-    Top = 285
+    Top = 269
     Width = 53
     Height = 15
     Caption = 'Password:'
@@ -220,14 +220,14 @@ object loginForm: TloginForm
   end
   object usernameTextBox: TEdit
     Left = 208
-    Top = 218
+    Top = 202
     Width = 121
     Height = 23
     TabOrder = 0
   end
   object passwordTextBox: TEdit
     Left = 208
-    Top = 282
+    Top = 266
     Width = 121
     Height = 23
     PasswordChar = '*'
@@ -235,7 +235,7 @@ object loginForm: TloginForm
   end
   object loginButton: TButton
     Left = 230
-    Top = 330
+    Top = 314
     Width = 75
     Height = 25
     Caption = 'Enter'

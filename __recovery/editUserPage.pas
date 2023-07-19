@@ -26,6 +26,7 @@ type
     procedure queryButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure editButtonClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -64,6 +65,11 @@ begin
     end;
     dbConnection.dbForm.editUserQ.Close;
     Self.Free;
+end;
+
+procedure TeditUser.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Self.Free;
 end;
 
 procedure TeditUser.FormCreate(Sender: TObject);

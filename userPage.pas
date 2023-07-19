@@ -176,7 +176,7 @@ function TuserForm.fillTable(tableQuery: TOracleQuery): boolean;
 procedure TuserForm.filterButtonClick(Sender: TObject);
 begin
 
-      if Self.checkEmptyBox(idBox) then
+      if IdBox.Text then
         begin
           dbConnection.dbForm.getEmployeeFilterQ.SetVariable('id',StrToInt(Self.idBox.Text));
         end
@@ -184,10 +184,30 @@ begin
         begin
           dbConnection.dbForm.getEmployeeFilterQ.SetVariable('id',-1);
         end;
-
-        dbConnection.dbForm.getEmployeeFilterQ.SetVariable('firstname', Self.firstNameBox.Text);
-        dbConnection.dbForm.getEmployeeFilterQ.SetVariable('lastname', Self.lastNameBox.Text);
-        dbConnection.dbForm.getEmployeeFilterQ.SetVariable('department', Self.departmentBox.Text);
+       if Self.checkEmptyBox(firstNameBox) then
+        begin
+          dbConnection.dbForm.getEmployeeFilterQ.SetVariable('firstname', Self.firstNameBox.Text);
+        end
+        else
+        begin
+          dbConnection.dbForm.getEmployeeFilterQ.SetVariable('firstname', 'None');
+        end;
+         if Self.checkEmptyBox(departmentBox) then
+        begin
+          dbConnection.dbForm.getEmployeeFilterQ.SetVariable('department', Self.departmentBox.Text);
+        end
+        else
+        begin
+          dbConnection.dbForm.getEmployeeFilterQ.SetVariable('department', 'None');
+        end;
+         if Self.checkEmptyBox(lastNameBox) then
+        begin
+          dbConnection.dbForm.getEmployeeFilterQ.SetVariable('lastname', Self.lastNameBox.Text);
+        end
+        else
+        begin
+          dbConnection.dbForm.getEmployeeFilterQ.SetVariable('lastname', 'None');
+        end;
 
         fillTable(dbConnection.dbForm.getEmployeeFilterQ);
 

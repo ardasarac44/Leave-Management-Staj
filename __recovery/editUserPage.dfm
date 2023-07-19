@@ -10,6 +10,7 @@ object editUser: TeditUser
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnClose = FormClose
   OnCreate = FormCreate
   TextHeight = 15
   object idBoxLabel: TLabel
@@ -57,7 +58,7 @@ object editUser: TeditUser
   object userGrid: TStringGrid
     Left = 24
     Top = 144
-    Width = 193
+    Width = 177
     Height = 225
     ColCount = 2
     DefaultColWidth = 90
