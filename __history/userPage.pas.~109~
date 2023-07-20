@@ -176,9 +176,9 @@ function TuserForm.fillTable(tableQuery: TOracleQuery): boolean;
 procedure TuserForm.filterButtonClick(Sender: TObject);
 begin
 
-      if Self.checkEmptyBox(idBox) then
+      if IdBox.Text then
         begin
-          dbConnection.dbForm.getEmployeeFilterQ.SetVariable('id', StrToInt(Self.idBox.Text));
+          dbConnection.dbForm.getEmployeeFilterQ.SetVariable('id',StrToInt(Self.idBox.Text));
         end
         else
         begin
@@ -210,6 +210,7 @@ begin
         end;
 
         fillTable(dbConnection.dbForm.getEmployeeFilterQ);
+
 end;
 
 function TuserForm.checkEmptyBox(filterBox : TEdit): boolean;

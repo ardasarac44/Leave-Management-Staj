@@ -57,7 +57,7 @@ object editUser: TeditUser
   object userGrid: TStringGrid
     Left = 24
     Top = 144
-    Width = 193
+    Width = 177
     Height = 225
     ColCount = 2
     DefaultColWidth = 90

@@ -287,13 +287,14 @@ object dbForm: TdbForm
     SQL.Strings = (
       'delete from CREW_REQUEST'
       'where REQUEST_ID = :req_id and crew_id = :crew_id')
+    Session = OracleSession1
     Optimize = False
     Variables.Data = {
       04000000020000000E0000003A005200450051005F0049004400030000000000
       000000000000100000003A0043005200450057005F0049004400030000000000
       000000000000}
-    Left = 208
-    Top = 48
+    Left = 240
+    Top = 80
   end
   object getEmployeeByNameQ: TOracleQuery
     SQL.Strings = (
@@ -314,7 +315,7 @@ object dbForm: TdbForm
       'Select request_id, '
       '       firstname,'
       '       lastname,'
-      '       crew_id,'
+      '       request_id,'
       '       department,'
       '       start_date,'
       '       end_date,'
@@ -330,15 +331,14 @@ object dbForm: TdbForm
   end
   object requestsFilterQ: TOracleQuery
     SQL.Strings = (
-      'Select request_id,'
+      'Select crew_id,'
       '       firstname,'
       '       lastname,'
-      '       crew_id,'
       '       department,'
+      '       request_id,'
       '       start_date,'
       '       end_date,'
-      '       request_priority,'
-      '       approved'
+      '       request_priority'
       'from crew_request'
       'inner join employee on crew_request.crew_id = employee.id'
       
@@ -368,8 +368,8 @@ object dbForm: TdbForm
     Variables.Data = {
       04000000010000000E0000003A005200450051005F0049004400030000000000
       000000000000}
-    Left = 144
-    Top = 384
+    Left = 184
+    Top = 360
   end
   object denyRequestQ: TOracleQuery
     SQL.Strings = (
@@ -381,8 +381,8 @@ object dbForm: TdbForm
     Variables.Data = {
       04000000010000000E0000003A005200450051005F0049004400030000000000
       000000000000}
-    Left = 88
-    Top = 384
+    Left = 128
+    Top = 360
   end
   object setPendingRequestQ: TOracleQuery
     SQL.Strings = (
@@ -394,8 +394,8 @@ object dbForm: TdbForm
     Variables.Data = {
       04000000010000000E0000003A005200450051005F0049004400050000000000
       000000000000}
-    Left = 32
-    Top = 384
+    Left = 72
+    Top = 360
   end
   object insertNewUserLoginQ: TOracleQuery
     SQL.Strings = (
@@ -410,8 +410,8 @@ object dbForm: TdbForm
       0000000000000000140000003A0055005300450052005F004E0041004D004500
       0500000000000000000000001C0000003A0055005300450052005F0050004100
       5300530057004F0052004400050000000000000000000000}
-    Left = 144
-    Top = 344
+    Left = 184
+    Top = 320
   end
   object getUserIdQ: TOracleQuery
     SQL.Strings = (
@@ -431,7 +431,7 @@ object dbForm: TdbForm
       00000000000000000000160000003A004400450050004100520054004D004500
       4E0054000500000000000000000000000C0000003A0045004D00410049004C00
       050000000000000000000000}
-    Left = 56
-    Top = 344
+    Left = 128
+    Top = 320
   end
 end
