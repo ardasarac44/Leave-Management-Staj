@@ -37,6 +37,7 @@ type
     setPendingRequestQ: TOracleQuery;
     insertNewUserLoginQ: TOracleQuery;
     getUserIdQ: TOracleQuery;
+    getRequestStatusQ: TOracleQuery;
   private
     { Private declarations }
   public

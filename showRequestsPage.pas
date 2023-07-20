@@ -23,11 +23,12 @@ type
     procedure fillRequestsTable();
     constructor Create(AOwner: TComponent; const userId : integer);reintroduce;
     procedure editRequestButtonClick(Sender: TObject);
-    function checkRequestStatus(): boolean;
+    function getRequestStatus(requestId: integer): string;
     procedure requestIdEditBoxClick(Sender: TObject);
     procedure requestIdDeleteBoxClick(Sender: TObject);
     procedure deleteRequestButtonClick(Sender: TObject);
     function checkRequestId(request : integer): boolean;
+    function isApproved(requestId: integer): boolean;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure updateRequestsButtonClick(Sender: TObject);
   private
@@ -45,24 +46,12 @@ implementation
 {$R *.dfm}
 
 
-function TusersRequestForm.checkRequestStatus(): boolean;
-var
-  i : integer;
+function TusersRequestForm.getRequestStatus(requestId: integer): string;
 begin
-  i := 0;
-  checkRequestStatus  := True;
-  while (i <> Self.requestsTable.RowCount) do
-  begin
-     if Self.requestsTable.Cells[2,i] = Self.requestIdEditBox.Text then
-     begin
-       if Self.requestsTable.Cells[6,i] = 'Approved' then
-       begin
-          checkRequestStatus  := False;
-          Break;
-       end;
-     end;
-     i := i+1;
-  end;
+  getRequestStatus := '';
+  dbConnection.dbForm.getRequestStatusQ.SetVariable('req_id', requestId);
+  dbConnection.dbForm.getRequestStatusQ.Execute;
+  getRequestStatus :=  dbConnection.dbForm.getRequestStatusQ.Field(0);
 end;
 
 constructor TusersRequestForm.Create(AOwner: TComponent; const userId: Integer);
@@ -76,14 +65,29 @@ end;
 procedure TusersRequestForm.deleteRequestButtonClick(Sender: TObject);
 var
   req_id: integer;
+  deleteNotification: string;
 begin
   req_id := StrToInt(Self.requestIdDeleteBox.Text);
+  deleteNotification := 'Are you sure you want to delete Request ' +  IntToStr(req_id);
   if checkRequestId(req_id) then
   begin
-    dbConnection.dbForm.deleteRequestQ.SetVariable('req_id', req_id);
-    dbConnection.dbForm.deleteRequestQ.SetVariable('crew_id', m_userId);
-    dbConnection.dbForm.deleteRequestQ.Execute;
-    dbConnection.dbForm.deleteRequestQ.Close;
+    if not isApproved(req_id)  then
+    begin
+      if Vcl.Dialogs.MessageDlg(deleteNotification,
+      mtConfirmation, [mbYes, mbNo], 0, mbYes) = mrYes then
+      begin
+        dbConnection.dbForm.deleteRequestQ.SetVariable('req_id', req_id);
+        dbConnection.dbForm.deleteRequestQ.SetVariable('crew_id', m_userId);
+        dbConnection.dbForm.deleteRequestQ.Execute;
+        dbConnection.dbForm.deleteRequestQ.Close;
+      end;
+    end else
+    begin
+      ShowMessage('Approved request cannot be deleted.');
+    end;
+  end else
+  begin
+  ShowMessage('Enter valid request ID.');
   end;
   Self.fillRequestsTable;
 end;
@@ -129,12 +133,15 @@ procedure TusersRequestForm.editRequestButtonClick(Sender: TObject);
 var
   lEditRequestForm: TeditRequestForm;
 begin
-    if checkRequestStatus() then
+    if checkRequestId(StrToInt(Self.requestIdEditBox.Text)) and (getRequestStatus(StrToInt(Self.requestIdEditBox.Text)) = 'Pending')  then
     begin
       lEditRequestForm := TeditRequestForm.Create(Self,Self.m_userId, StrToInt(Self.requestIdEditBox.Text));
       lEditRequestForm.BringToFront;
       lEditRequestForm.Name := 'editRequestForm';
       lEditRequestForm.Show;
+    end else
+    begin
+      ShowMessage('Enter valid request ID.'+sLineBreak+'You can only edit pending requests.');
     end;
 end;
 
@@ -175,5 +182,17 @@ begin
      end;
 end;
 
+
+function TusersRequestForm.isApproved(requestId: integer): boolean;
+begin
+  isApproved := False;
+  dbConnection.dbForm.getRequestStatusQ.SetVariable('req_id', requestId);
+  dbConnection.dbForm.getRequestStatusQ.Execute;
+  if dbConnection.dbForm.getRequestStatusQ.Field(0) = 'Approved' then
+  begin
+    isApproved := True;
+  end;
+  dbConnection.dbForm.getRequestStatusQ.Close;
+end;
 
 end.

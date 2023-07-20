@@ -25,10 +25,10 @@ object controlRequestsForm: TcontrolRequestsForm
     TabOrder = 0
   end
   object filterPanel: TPanel
-    Left = 774
+    Left = 759
     Top = 56
     Width = 138
-    Height = 449
+    Height = 465
     TabOrder = 1
     object idLabel: TLabel
       Left = 32
@@ -121,7 +121,7 @@ object controlRequestsForm: TcontrolRequestsForm
     end
   end
   object approveRequestPanel: TPanel
-    Left = 472
+    Left = 456
     Top = 392
     Width = 281
     Height = 129

@@ -1,7 +1,7 @@
 object loginForm: TloginForm
   Left = 0
   Top = 0
-  Caption = 'loginForm'
+  Caption = 'Leave Request System'
   ClientHeight = 363
   ClientWidth = 451
   Color = clBtnFace

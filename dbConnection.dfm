@@ -2,8 +2,8 @@ object dbForm: TdbForm
   Left = 0
   Top = 0
   Caption = 'dbForm'
-  ClientHeight = 442
-  ClientWidth = 628
+  ClientHeight = 441
+  ClientWidth = 624
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -315,7 +315,7 @@ object dbForm: TdbForm
       'Select request_id, '
       '       firstname,'
       '       lastname,'
-      '       request_id,'
+      '       crew_id,'
       '       department,'
       '       start_date,'
       '       end_date,'
@@ -434,5 +434,18 @@ object dbForm: TdbForm
       050000000000000000000000}
     Left = 128
     Top = 320
+  end
+  object getRequestStatusQ: TOracleQuery
+    SQL.Strings = (
+      'select approved '
+      'from crew_request'
+      'where request_id = :req_id')
+    Session = OracleSession1
+    Optimize = False
+    Variables.Data = {
+      04000000010000000E0000003A005200450051005F0049004400030000000000
+      000000000000}
+    Left = 144
+    Top = 104
   end
 end

@@ -2,8 +2,8 @@ object userForm: TuserForm
   Left = 0
   Top = 0
   Caption = 'userForm'
-  ClientHeight = 454
-  ClientWidth = 864
+  ClientHeight = 452
+  ClientWidth = 885
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

@@ -61,6 +61,7 @@ begin
     dbConnection.dbForm.requestsFilterQ.SetVariable('id', -1);
   end;
 
+
   if not (Self.requestIdBox.Text = '') then
   begin
     dbConnection.dbForm.requestsFilterQ.SetVariable('req_id', StrToInt(Self.requestIdBox.Text));
@@ -71,9 +72,19 @@ begin
   end;
 
 
+  if not (Self.departmentBox.Text= '') then
+  begin
+    dbConnection.dbForm.requestsFilterQ.SetVariable('department', '^' + Self.departmentBox.Text);
+  end
+  else
+  begin
+    dbConnection.dbForm.requestsFilterQ.SetVariable('department', '');
+  end;
+
+
   dbConnection.dbForm.requestsFilterQ.SetVariable('firstname', Self.firstNameBox.Text);
   dbConnection.dbForm.requestsFilterQ.SetVariable('lastname', Self.lastNameBox.Text);
-  dbConnection.dbForm.requestsFilterQ.SetVariable('department', '^' + Self.departmentBox.Text);
+
   Self.fillRequestsTable(dbConnection.dbForm.requestsFilterQ);
 end;
 

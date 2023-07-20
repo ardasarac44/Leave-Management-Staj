@@ -14,28 +14,28 @@ object editRequestForm: TeditRequestForm
   OnCreate = FormCreate
   TextHeight = 15
   object Shape1: TShape
-    Left = 320
-    Top = 80
+    Left = 312
+    Top = 72
     Width = 265
-    Height = 354
+    Height = 314
   end
   object editStartDateLabel: TLabel
-    Left = 344
-    Top = 169
+    Left = 336
+    Top = 121
     Width = 54
     Height = 15
     Caption = 'Start Date:'
   end
   object editEndDateLabel: TLabel
-    Left = 344
-    Top = 225
+    Left = 336
+    Top = 177
     Width = 50
     Height = 15
     Caption = 'End Date:'
   end
   object editPriorityLabel: TLabel
-    Left = 344
-    Top = 298
+    Left = 336
+    Top = 250
     Width = 41
     Height = 15
     Caption = 'Priority:'
@@ -54,8 +54,8 @@ object editRequestForm: TeditRequestForm
     TabOrder = 0
   end
   object editStartDatePicker: TDatePicker
-    Left = 416
-    Top = 152
+    Left = 408
+    Top = 104
     Date = 45119.000000000000000000
     DateFormat = 'dd/mm/yyyy'
     Font.Charset = DEFAULT_CHARSET
@@ -66,8 +66,8 @@ object editRequestForm: TeditRequestForm
     TabOrder = 1
   end
   object editEndDatePicker: TDatePicker
-    Left = 416
-    Top = 208
+    Left = 408
+    Top = 160
     Date = 45119.000000000000000000
     DateFormat = 'dd/mm/yyyy'
     Font.Charset = DEFAULT_CHARSET
@@ -78,15 +78,15 @@ object editRequestForm: TeditRequestForm
     TabOrder = 2
   end
   object editRadioButtonGroup: TRadioGroup
-    Left = 416
-    Top = 288
+    Left = 408
+    Top = 240
     Width = 129
     Height = 81
     TabOrder = 3
   end
   object priorityRadioButton1: TRadioButton
-    Left = 432
-    Top = 298
+    Left = 424
+    Top = 250
     Width = 113
     Height = 17
     Caption = '1 (highest)'
@@ -95,24 +95,24 @@ object editRequestForm: TeditRequestForm
     TabStop = True
   end
   object priorityRadioButton2: TRadioButton
-    Left = 432
-    Top = 321
+    Left = 424
+    Top = 273
     Width = 113
     Height = 17
     Caption = '2'
     TabOrder = 5
   end
   object priorityRadioButton3: TRadioButton
-    Left = 432
-    Top = 344
+    Left = 424
+    Top = 296
     Width = 113
     Height = 17
     Caption = '3'
     TabOrder = 6
   end
   object editButton: TButton
-    Left = 416
-    Top = 392
+    Left = 408
+    Top = 344
     Width = 75
     Height = 25
     Caption = 'Edit'
